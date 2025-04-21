@@ -89,7 +89,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url("/starry-bg.png");
     background-size: cover;
     background-attachment: fixed;
   }

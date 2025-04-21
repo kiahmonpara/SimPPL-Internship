@@ -398,6 +398,6 @@ async def get_markdown_content(section: str):
 
 if __name__ == "__main__":
     import uvicorn
-    print(f"Starting data server on http://localhost:8000")
+    print(f"Starting data server on https://simppl-python.onrender.com")
     print(f"JSON data path: {JSON_DATA_PATH_OUTPUT if os.path.exists(JSON_DATA_PATH_OUTPUT) else JSON_DATA_PATH_INPUT}")
     uvicorn.run(app, host="0.0.0.0", port=8000)

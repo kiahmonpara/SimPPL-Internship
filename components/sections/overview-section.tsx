@@ -40,13 +40,18 @@ interface PostsPerDayData {
 }
 
 interface ContentCategoriesData {
+  data: {
   categories: string[];
   counts: number[];
+};
 }
 
 interface TopSubredditsData {
-  subreddits: string[];
-  counts: number[];
+  data: {
+    subreddits: string[];
+    counts: number[];
+  };
+  
 }
 
 interface BadWordsData {
@@ -94,8 +99,7 @@ interface ChartDataState {
   topBadWords: BadWordsData | null;
   topPoliticalWords: PoliticalWordsData | null;
   subredditDistribution: SubredditDistributionData | null;
-  topUsers: TopUserData[] | null;
-  topSubredditDetails: TopSubredditData[] | null;
+  data?:any | null
 }
 
 export default function OverviewSection() {
@@ -110,8 +114,6 @@ export default function OverviewSection() {
     topBadWords: null,
     topPoliticalWords: null,
     subredditDistribution: null,
-    topUsers: null,
-    topSubredditDetails: null,
   })
   const [loading, setLoading] = useState(true)
 
@@ -125,25 +127,18 @@ export default function OverviewSection() {
           badWordsRes, 
           politicalWordsRes, 
           subredditDistRes,
-          topUsersRes,
-          topSubredditDetailsRes,
-          sentimentScoreRes,
-          summaryRes,
+          
           sentimentRes,
           networkRes
         ] = await Promise.all([
-          fetch("http://localhost:8000/api/posts-per-day"),
-          fetch("http://localhost:8000/api/content-categories"),
-          fetch("http://localhost:8000/api/top-subreddits"),
-          fetch("http://localhost:8000/api/top-bad-words"),
-          fetch("http://localhost:8000/api/top-political-words"),
-          fetch("http://localhost:8000/api/subreddit-distribution"),
-          fetch("http://localhost:8000/api/top-users"),
-          fetch("http://localhost:8000/api/top-subreddit-details"),
-          fetch("http://localhost:8000/api/sentiment-vs-score"),
-          fetch("http://localhost:8000/api/markdown/overview"),
-          fetch("http://localhost:8000/api/markdown/sentiment-analysis"),
-          fetch("http://localhost:8000/api/markdown/network-analysis")
+          fetch("https://simppl-python.onrender.com/api/posts-per-day"),
+          fetch("https://simppl-python.onrender.com/api/content-categories"),
+          fetch("https://simppl-python.onrender.com/api/top-subreddits"),
+          fetch("https://simppl-python.onrender.com/api/top-bad-words"),
+          fetch("https://simppl-python.onrender.com/api/top-political-words"),
+          fetch("https://simppl-python.onrender.com/api/subreddit-distribution"),
+          fetch("https://simppl-python.onrender.com/api/markdown/sentiment-analysis"),
+          fetch("https://simppl-python.onrender.com/api/markdown/network-analysis")
         ]);
   
         const [
@@ -153,10 +148,7 @@ export default function OverviewSection() {
           badWords, 
           politicalWords, 
           subredditDist,
-          topUsers,
-          topSubredditDetails,
-          sentimentScore,
-          summary,
+          
           sentiment,
           network
         ] = await Promise.all([
@@ -166,10 +158,7 @@ export default function OverviewSection() {
           badWordsRes.json(),
           politicalWordsRes.json(),
           subredditDistRes.json(),
-          topUsersRes.json(),
-          topSubredditDetailsRes.json(),
-          sentimentScoreRes.json(),
-          summaryRes.json(),
+          
           sentimentRes.json(),
           networkRes.json()
         ]);
@@ -180,12 +169,10 @@ export default function OverviewSection() {
           topSubreddits: subreddits,
           topBadWords: badWords,
           topPoliticalWords: politicalWords,
-          subredditDistribution: subredditDist,
-          topUsers: topUsers?.data,
-          topSubredditDetails: topSubredditDetails?.data,
+          subredditDistribution: subredditDist
+          
         })
         
-        setSummaryContent(summary.content || "");
         setSentimentContent(sentiment.content || "");
         setNetworkContent(network.content || "");
       } catch (error) {
@@ -448,7 +435,7 @@ export default function OverviewSection() {
           <CardContent className="flex justify-center">
             <div className="h-[300px] w-full relative">
               <img
-                src="http://localhost:8000/api/political-wordcloud"
+                src="https://simppl-python.onrender.com/api/political-wordcloud"
                 alt="Political Words Word Cloud"
                 className="object-contain h-full w-full"
               />
@@ -463,7 +450,7 @@ export default function OverviewSection() {
           <CardContent className="flex justify-center">
             <div className="h-[300px] w-full relative">
               <img
-                src="http://localhost:8000/api/bad-words-wordcloud"
+                src="https://simppl-python.onrender.com/api/bad-words-wordcloud"
                 alt="Profanity Word Cloud"
                 className="object-contain h-full w-full"
               />

@@ -27,7 +27,7 @@ function GraphVisualization() {
   useEffect(() => {
     const fetchGraphML = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/crosspost-network-graphml');
+        const response = await fetch('https://simppl-python.onrender.com/api/crosspost-network-graphml');
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }
@@ -67,7 +67,7 @@ function GraphVisualization() {
           <p className="font-bold mb-2">Error loading graph data</p>
           <p className="text-sm">{error}</p>
           <p className="mt-4 text-xs text-gray-500">
-            Check that the API server is running at http://localhost:8000 and the GraphML file exists
+            Check that the API server is running at https://simppl-python.onrender.com and the GraphML file exists
           </p>
         </div>
       </div>
@@ -102,7 +102,7 @@ function CrosspostStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/crosspost-stats');
+        const response = await fetch('https://simppl-python.onrender.com/api/crosspost-stats');
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }
@@ -192,7 +192,7 @@ function TopSubreddits() {
   useEffect(() => {
     const fetchTopData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/crosspost-top');
+        const response = await fetch('https://simppl-python.onrender.com/api/crosspost-top');
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
         }

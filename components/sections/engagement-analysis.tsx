@@ -213,11 +213,11 @@ useEffect(() => {
           engagementRes,
           recommendationsRes
         ] = await Promise.all([
-          fetch('http://localhost:8000/api/markdown/overview'),
-          fetch('http://localhost:8000/api/markdown/content-analysis'),
-          fetch('http://localhost:8000/api/markdown/sentiment-analysis'),
-          fetch('http://localhost:8000/api/markdown/engagement-analysis'),
-          fetch('http://localhost:8000/api/markdown/recommendations')
+          fetch('https://simppl-python.onrender.com/api/markdown/overview'),
+          fetch('https://simppl-python.onrender.com/api/markdown/content-analysis'),
+          fetch('https://simppl-python.onrender.com/api/markdown/sentiment-analysis'),
+          fetch('https://simppl-python.onrender.com/api/markdown/engagement-analysis'),
+          fetch('https://simppl-python.onrender.com/api/markdown/recommendations')
         ]);
         
         const jsonData = await jsonResponse.json();
@@ -483,7 +483,7 @@ const extractSection = (content: string, sectionName: string, endSection?: strin
       <Card className="gradient-card card-hover animate-fade-in">
         <CardHeader>
           <CardTitle> Engagement Analysis </CardTitle>
-          <CardDescription>Analysis from analysis1.py with {overviewStats.totalPosts.toLocaleString()} posts across {overviewStats.totalSubreddits} subreddits</CardDescription>
+          <CardDescription>Engagement Analysis from {overviewStats.totalPosts.toLocaleString()} posts across {overviewStats.totalSubreddits} subreddits</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="mb-4">

@@ -20,9 +20,11 @@ This FastAPI-based server provides endpoints for accessing Reddit content analys
 - [Frontend Sections](#frontend-sections)
   - [Overview Section](#overview-section)
   - [Story Section](#story-section)
-  - [Python Analysis Section](#python-analysis-section)
+  - [Content Analysis Section](#content-analysis-section)
   - [Cross-Post Section](#cross-post-section)
   - [Engagement Analysis Section](#engagement-analysis-section)
+- [Links](#links)
+
 
 ## Overview 
 
@@ -113,7 +115,7 @@ Run the server using:
 `python image_server.py` 
 
 
-This will start the server at `http://localhost:8000`.
+This will start the server at `https://simppl-python.onrender.com`.
 
 Alternatively, use Uvicorn directly:
 
@@ -215,3 +217,7 @@ Alternatively, use Uvicorn directly:
 - Engagement Tab: Score and comment metrics analysis
 - Sentiment Tab: Emotional tone analysis with context
 - Recommendations Tab: Data-driven content strategy suggestions
+
+### Links
+- Video Reference: `https://youtu.be/0i2CjiSyurU`
+- Hosted Site: ``
